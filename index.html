@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى ملكتي ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4a0e17;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(219, 48, 105, 0.15);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        h1, h2, h3, p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* شاشة الباسورد */
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ff85a2;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        /* الأزرار */
+        .btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff758f);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.2s, background 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+        }
+
+        .btn-big {
+            font-size: 24px;
+            padding: 20px;
+            background: linear-gradient(45deg, #d90429, #ef233c);
+        }
+
+        /* الصور والذكريات */
+        .memory-card {
+            margin-bottom: 40px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .memory-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            object-fit: cover;
+            max-height: 400px;
+        }
+
+        /* العداد */
+        .counter-box {
+            background: #fff0f3;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed #ffb3c1;
+            margin: 30px 0;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .counter-item {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .counter-num {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff4d6d;
+        }
+
+        .counter-label {
+            font-size: 12px;
+            color: #7a5c61;
+        }
+
+        .error-msg {
+            color: #d90429;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- 1. شاشة الباسورد -->
+    <div id="screen-password">
+        <h2>🔒 ادخلي كلمة السر</h2>
+        <input type="password" id="password-field" class="password-input" placeholder="اكتبِ الباسورد هنا...">
+        <div id="error-message" class="error-msg hidden">كلمة السر غير صحيحة، حاولي تاني يا ملكتي ❤️</div>
+        <button class="btn" onclick="checkPassword()">دخول ✨</button>
+    </div>
+
+    <!-- 2. رسالة الترحيب الأولى -->
+    <div id="screen-intro" class="hidden">
+        <p>“بحب أعملك مفاجآت مش تقليدية زي الكل، عشان أنا عمري ما شوفتك زي أي بنت في الدنيا…<br>بحبك ❤️<br>استمتعي 😔♥️”</p>
+        <button class="btn" onclick="showMemories()">Ready ❤️</button>
+    </div>
+
+    <!-- 3. شاشة الذكريات والمحتوى الرئيسي -->
+    <div id="screen-content" class="hidden">
+        
+        <!-- الصورة الأولى -->
+        <div class="memory-card">
+            <img src="image_4.png" alt="البيبسي" class="memory-image">
+            <p>“فاكرة دي؟<br>دي أول حاجة كانت بينا ❤️”</p>
+        </div>
+
+        <!-- الصورة الثانية -->
+        <div class="memory-card">
+            <img src="image_5.png" alt="الكول" class="memory-image">
+            <p>“فاكرة الكول ده؟<br>مسبتنيش أبداً يوميها ونمت جنبك مطمن ❤️”</p>
+        </div>
+
+        <!-- الصورة الثالثة -->
+        <div class="memory-card">
+            <img src="image_3.png" alt="الأكل" class="memory-image">
+            <p>“كان قليل…<br>بس كان نفسي ناكل سوا ❤️”</p>
+        </div>
+
+        <!-- الصورة الرابعة -->
+        <div class="memory-card">
+            <img src="image_2.png" alt="الورد" class="memory-image">
+            <p>“كان أحلى ورد جبته في حياتي<br>لأحلى وردة في حياتي<br>بحبك أوي ❤️”</p>
+        </div>
+
+        <!-- الصورة الخامسة -->
+        <div class="memory-card">
+            <img src="image.png" alt="رابونزل" class="memory-image">
+            <p>“هتفضلي أحلى رابونزل في عيني<br>إنتِ الملكة بتاعت قلبي أنا وبس ❤️”</p>
+        </div>
+
+        <!-- عداد العلاقة -->
+        <div class="counter-box">
+            <h3>حكايتنا بدأت من 15 / 7 / 2021 وبقالنا مع بعض:</h3>
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-num" id="years-val">0</div>
+                    <div class="counter-label">سنين</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-num" id="months-val">0</div>
+                    <div class="counter-label">شهور</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-num" id="days-val">0</div>
+                    <div class="counter-label">أيام</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>أحلى مريم في الدنيا ❤️</h2>
+
+        <!-- زرار الجواز -->
+        <button class="btn btn-big" id="proposal-btn" onclick="propose()">تقبلي تتجوزيني؟ 💍</button>
+        
+        <!-- رسالة ما بعد الضغط -->
+        <h1 id="final-message" class="hidden" style="margin-top: 30px; color: #d90429;">
+            بحبك يا كل عمري ❤️
+        </h1>
+
+    </div>
+
+</div>
+
+<script>
+    const CORRECT_PASSWORD = "meryem2021"; 
+
+    function checkPassword() {
+        const input = document.getElementById('password-field').value;
+        if(input === CORRECT_PASSWORD) {
+            document.getElementById('screen-password').classList.add('hidden');
+            document.getElementById('screen-intro').classList.remove('hidden');
+        } else {
+            document.getElementById('error-message').classList.remove('hidden');
+        }
+    }
+
+    function showMemories() {
+        document.getElementById('screen-intro').classList.add('hidden');
+        document.getElementById('screen-content').classList.remove('hidden');
+        calculateRelationshipTime();
+    }
+
+    function calculateRelationshipTime() {
+        const startDate = new Date('2021-07-15');
+        const today = new Date();
+
+        let years = today.getFullYear() - startDate.getFullYear();
+        let months = today.getMonth() - startDate.getMonth();
+        let days = today.getDate() - startDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+            days += previousMonth;
+        }
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        document.getElementById('years-val').innerText = years;
+        document.getElementById('months-val').innerText = months;
+        document.getElementById('days-val').innerText = days;
+    }
+
+    function propose() {
+        document.getElementById('proposal-btn').classList.add('hidden');
+        document.getElementById('final-message').classList.remove('hidden');
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
